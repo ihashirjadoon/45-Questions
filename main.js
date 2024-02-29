@@ -1,11 +1,11 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var promptSync = require("prompt-sync");
-var prompt = promptSync();
+// import promptSync from "prompt-sync";
+// const prompt = promptSync();
 // exercise 1
 // Installation of tools
 // exercise 2 Printing a simple hello message
-/*var p_name: string = "\nJohn";
+/*
+var p_name: string = "\nJohn";
 console.log(`Hello ${p_name}! Hope you are doing well`);
 
 // exercise 3 Making name upper and lower case by functions
@@ -16,6 +16,7 @@ console.log(p_name.toUpperCase());
 // exercise 4 writing a quote
 var quote: string = ('\nImran Khan once said, "You only lose when you giveup!"');
 console.log(quote);
+
 
 // exercise 5 storing name in a variable
 
@@ -419,22 +420,88 @@ function make_shirts(size = "large", message = "I love ts!") {
   console.log(city_country('Tokyo','Japan'));
   console.log(city_country('Beijing','China'));
   console.log(city_country('Tehran','Iran'));
-  */
-//exercise 40
-function make_album(artist, title, tracks) {
-    var album = {
-        artist: artist,
-        title: title,
-        tracks: tracks,
-    };
-    if (tracks !== undefined) {
-        album.tracks = tracks;
-    }
-    return album;
+  
+  // Exercise 40
+function make_album(artist: string, title: string, tracks: string | undefined) {
+  const album = {
+    artist,
+    title,
+    tracks,
+  };
+
+  if (tracks !== undefined) {
+    album.tracks = tracks;
+  }
+
+  return album;
 }
-var album1 = make_album('Artist 1', 'Album 1', 'track 1');
-var album2 = make_album('Artist 2', 'Album 2', 'track 1');
-var album3 = make_album('Artist 3', 'Album 3', 'track 1');
+
+const album1 = make_album('Artist 1', 'Album 1','track 1');
+const album2 = make_album('Artist 2', 'Album 2','track 1');
+const album3 = make_album('Artist 3', 'Album 3','track 1');
+
 console.log(album1);
 console.log(album2);
 console.log(album3);
+
+// Exercise 41
+const musician_names: string[] = ['Robb', 'Chris','Robb','Ned'];
+function show_magician(names: string[]){
+  for( const musician_name of names){
+    console.log(`${musician_name}, You are a musician`);
+  }
+}
+show_magician(musician_names);
+
+// Exercise 42
+const great_magicians: string[] = ['Robb', 'Chris','Robb','Ned'];
+function show_great_magician(names: string[]){
+  for( const magician_name of names){
+    console.log(`${magician_name}, You are a great musician`);
+  }
+}
+show_great_magician(great_magicians);
+
+// Exercise 43
+function make_great(names: string[]): string[] {
+  const great_names = names.map(name => `Great ${name}`);
+  return great_names;
+}
+
+const unchanged_magicians: string[] = ['Robb', 'Chris','Robb','Ned'];
+
+const great_magicians_copy = make_great([...unchanged_magicians]);
+
+show_magician(unchanged_magicians);
+show_great_magician(great_magicians_copy);
+
+// exercise 44
+function make_sandwich(...ingredients: string[]) {
+  if(ingredients.length == 0 ) {
+    console.log(`Your sandwich have nothing on it!`)
+
+  } else {
+    console.log(`Your sandwich has: ${ingredients.join(",")}`)
+  }
+}
+make_sandwich('ham','cheese');
+make_sandwich('peanut butter','jelly');
+make_sandwich();
+*/
+// exercise 45
+function createCar(manufacturer, model, ...options) {
+    const car = {
+        manufacturer,
+        model,
+    };
+    for (let i = 0; i < options.length; i += 2) {
+        const key = options[i];
+        const value = options[i + 1];
+        car[key] = value;
+    }
+    return car;
+}
+// Call the function with required and optional information
+const carInfo = createCar('Toyota', 'Camry', 'color', 'blue', 'optionalFeature', 'sunroof');
+// Print the object to check the information stored
+console.log(carInfo);
